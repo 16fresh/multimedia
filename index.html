@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>纹样演化互动展</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="images/original_1.png" as="image">
 </head>
 <body>
 
@@ -15,7 +16,13 @@
             <div class="original-motif">
                 <img src="images/original_1.png" alt="原始瑞兽纹样"> 
             </div>
-        </header>
+            
+            <div class="motif-description">
+                <h3 style="color: #00897b; margin-top: 10px;">纹样介绍</h3>
+                <p><strong>明代万历年间 - 哥釉青花松鹿纹瓶</strong></p>
+                <p style="font-size: 0.95em; color: #666;">（鹿纹在明代寓意长寿吉祥。这段文字将作为您海报上动物纹样背景信息的延伸。）</p>
+            </div>
+            </header>
 
         <div class="style-selector">
             <button onclick="showResult('minimalist')">极简抽象风</button>
@@ -23,40 +30,40 @@
             <button onclick="showResult('popart')">波普艺术风</button>
             <button onclick="showResult('guochao')">新国潮风</button>
         </div>
-
+        
         <div id="minimalist" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>极简抽象风</h2>
-            <img src="images/minimalist_result.png" alt="极简抽象风演化图" class="evolved-image"> 
+            <img src="images/Minimalist _result_1.png" alt="极简抽象风演化图" class="evolved-image"> 
             <div class="content-box">
                 <h3>设计解读</h3>
                 <p>我们将瑞兽纹样提炼至最基本的几何线条，去除了所有装饰性细节，强调其核心轮廓的视觉张力。这代表了当代设计对“形式服从功能”的追求，使得纹样具备了极强的现代识别性。</p>
                 <h3>现代符号对应</h3>
-                <p>对应现代 Logo 设计中的**扁平化趋势**，其简洁的线条适用于App图标或品牌标志，强调符号在小屏幕上的识别度和高效传达。</p>
+                <p>对应现代 Logo 设计中的"扁平化趋势"，其简洁的线条适用于App图标或品牌标志，强调符号在小屏幕上的识别度和高效传达。</p>
             </div>
         </div>
 
         <div id="cyberpunk" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>赛博朋克风</h2>
-            <img src="images/cyberpunk_result.png" alt="赛博朋克风演化图" class="evolved-image">
+            <img src="images/Cyberpunk_result_1.png" alt="赛博朋克风演化图" class="evolved-image">
             <div class="content-box">
                 <h3>设计解读</h3>
                 <p>纹样被置于一个由霓虹和数据流构成的未来都市背景中，瑞兽的鳞片转化为闪烁的电路板，全身环绕着故障艺术（Glitch Art）的光芒，象征着传统精神在虚拟赛博世界中的永恒守护。</p>
                 <h3>现代符号对应</h3>
-                <p>对应**游戏UI设计**和**数字艺术**中的未来主义美学。它融合了东方文化符号与西方科幻设定，常被用于科幻电影、电子音乐专辑封面等。</p>
+                <p>对应游戏UI设计和数字艺术中的未来主义美学。它融合了东方文化符号与西方科幻设定，常被用于科幻电影、电子音乐专辑封面等。</p>
             </div>
         </div>
 
         <div id="popart" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>波普艺术风</h2>
-            <img src="images/popart_result.png" alt="波普艺术风演化图" class="evolved-image">
+            <img src="images/popart_result_1.png" alt="波普艺术风演化图" class="evolved-image">
             <div class="content-box">
                 <h3>设计解读</h3>
                 <p>使用大胆的高饱和撞色，并采用安迪·沃霍尔式的丝网印刷和重复图案效果，将历史悠久的瑞兽纹样转化为大众文化中的流行图腾，充满年轻活力和反叛精神。</p>
                 <h3>现代符号对应</h3>
-                <p>对应**街头潮牌**和**时尚快消品包装**的设计理念。它强调视觉冲击力和符号的复制传播，将高雅文化转化为人人都可消费的艺术。</p>
+                <p>对应"街头潮牌"和"时尚快消品包装"的设计理念。它强调视觉冲击力和符号的复制传播，将高雅文化转化为人人都可消费的艺术。</p>
             </div>
         </div>
 
@@ -68,7 +75,7 @@
                 <h3>设计解读</h3>
                 <p>我们将瑞兽纹样与当代流行的漫画、插画风格相结合，使用醒目的中国红和金色，强化了纹样的吉祥和威严寓意。这是一种在传统框架下进行大胆、现代表达的活化方式。</p>
                 <h3>现代符号对应</h3>
-                <p>对应**国货品牌**的复兴浪潮，如李宁、华为等，强调文化自信和民族符号的潮流化。适用于品牌 LOGO、联名款包装设计等。</p>
+                <p>对应"国货品牌"的复兴浪潮，如李宁、华为等，强调文化自信和民族符号的潮流化。适用于品牌 LOGO、联名款包装设计等。</p>
             </div>
         </div>
 
