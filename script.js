@@ -6,7 +6,7 @@ const MOTIFS_DATA = {
         history: '“哥釉青花”是其釉色与工艺风格的一种。所谓青花，即在瓷器胚胎上以钴料描绘图案，再施透明釉、入窑高温烧成，是中国传统“釉下彩”瓷器的重要流派。这件松鹿纹瓶以“鹿 + 松柏”为主要装饰——鹿取“禄”之谐音，象征“福禄”；松柏寓意长寿、常青，因此松鹿纹整体寓意为“福禄双全、长寿永年”。这种通过谐音与图像结合来表达吉祥寓意，是中国古代瓷器中常见的装饰寓意方式。瓶的造型为传统的“瓶／长颈瓶”样式（也有人称其为棒槌瓶、长颈圆腹瓶），线条流畅，造型稳重／端庄，结合纹饰与器型，使作品既具实用功能，又兼具观赏与象征价值。',
         images: {
             original: 'original_1.png',
-            minimalist: 'Minimalist_result_1.png',
+            minimalist: 'Minimalist _result_1.png',
             cyberpunk: 'Cyberpunk_result_1.png',
             popart: 'popart_result_1.png',
             guochao: 'guochao_result_1.png'
@@ -20,8 +20,8 @@ const MOTIFS_DATA = {
             original: 'original_2.png',
             minimalist: 'Minimalist_result_2.png',
             cyberpunk: 'Cyberpunk_result_2.png',
-            popart: 'popart_result_2.png',
-            guochao: 'guochao_result_2.png'
+            popart: 'Popart_result_2.png',
+            guochao: 'Guochao_result_2.png'
         }
     },
     // Motif 3: 白玉夔龙佩 (新增)
@@ -32,8 +32,8 @@ const MOTIFS_DATA = {
             original: 'original_3.png',
             minimalist: 'Minimalist_result_3.png',
             cyberpunk: 'Cyberpunk_result_3.png',
-            popart: 'popart_result_3.png',
-            guochao: 'guochao_result_3.png'
+            popart: 'Popart_result_3.png',
+            guochao: 'Guochao_result_3.png'
         }
     },
     // Motif 4: 朱雀纹瓦当 (新增)
@@ -44,8 +44,8 @@ const MOTIFS_DATA = {
             original: 'original_4.png',
             minimalist: 'Minimalist_result_4.png',
             cyberpunk: 'Cyberpunk_result_4.png',
-            popart: 'popart_result_4.png',
-            guochao: 'guochao_result_4.png'
+            popart: 'Popart_result_4.png',
+            guochao: 'Guochao_result_4.png'
         }
     }
 };
@@ -263,3 +263,4 @@ function stopReading() {
         window.currentUtterance = null;
     }
 }
+
