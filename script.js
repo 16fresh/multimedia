@@ -13,49 +13,61 @@ const MOTIFS_DATA = {
             guochao: 'guochao_result_1.png'
         }
     }
-    // 如果需要添加第二个纹样，请在此处添加 '2' 字段
 };
+
+
+// ------------------ 全局语音设置（NEW!） ------------------
+
+// 全局变量用于保存 utterance 对象的引用，防止移动端垃圾回收
+window.currentUtterance = null;
+// 全局变量用于存储可用的中文语音
+window.zhVoice = null; 
+
+// 🎯 优化点：等待语音列表加载，并选择中文语音
+if ('speechSynthesis' in window) {
+    const speech = window.speechSynthesis;
+    
+    // 检查语音是否已经加载（某些浏览器可能会同步加载）
+    if (speech.getVoices().length !== 0) {
+        window.zhVoice = speech.getVoices().find(v => v.lang.startsWith('zh'));
+    }
+
+    // 如果未加载，等待 onvoiceschanged 事件
+    speech.onvoiceschanged = () => {
+        if (!window.zhVoice) {
+            // 尝试查找任意中文语音 ('zh-CN', 'zh-TW', 'zh-HK', 'zh')
+            window.zhVoice = speech.getVoices().find(v => v.lang.startsWith('zh'));
+        }
+    };
+}
 
 
 // ------------------ 页面初始化 ------------------
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 读取 URL 参数
     const urlParams = new URLSearchParams(window.location.search);
-    const motifId = urlParams.get('motif') || '1'; // 默认加载 '1'
-
-    // 2. 加载对应的纹样数据
+    const motifId = urlParams.get('motif') || '1'; 
     const motifData = MOTIFS_DATA[motifId] || MOTIFS_DATA['1'];
     
-    // 3. 应用纹样数据到 HTML 元素
     if (motifData) {
-        // 更新原始纹样图片
         document.querySelector('.original-motif img').src = `images/${motifData.images.original}`;
-        
-        // 更新原始纹样介绍文本 (strong标签内容)
         const descriptionElement = document.querySelector('.motif-description strong');
         if (descriptionElement) {
             descriptionElement.textContent = motifData.description;
         }
-
-        // 更新历史回望文本 (history-text id内容)
         const historyTextEl = document.getElementById('history-text');
         if (historyTextEl) {
             historyTextEl.textContent = motifData.history;
         }
-
-        // 更新四个结果展示页的图片
         document.querySelector('#minimalist img').src = `images/${motifData.images.minimalist}`;
         document.querySelector('#cyberpunk img').src = `images/${motifData.images.cyberpunk}`;
         document.querySelector('#popart img').src = `images/${motifData.images.popart}`;
         document.querySelector('#guochao img').src = `images/${motifData.images.guochao}`;
     }
 
-    // 4. 默认隐藏所有结果页面
     const results = document.querySelectorAll('.result-display');
     results.forEach(el => el.classList.add('hidden'));
 
-    // 5. 确保选择器是可见的
     document.getElementById('selection-header').classList.remove('hidden');
     document.querySelector('.style-selector').classList.remove('hidden');
 });
@@ -63,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ------------------ 页面切换功能 ------------------
 
-// 显示特定结果并隐藏选择器
 function showResult(styleId) {
     stopReading(); 
     document.getElementById('selection-header').classList.add('hidden');
@@ -74,19 +85,16 @@ function showResult(styleId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 显示历史介绍页面
 function showHistory() {
     stopReading(); 
     document.getElementById('selection-header').classList.add('hidden');
     document.querySelector('.style-selector').classList.add('hidden');
     const results = document.querySelectorAll('.result-display');
     results.forEach(el => el.classList.add('hidden'));
-    document.getElementById('history-display').classList.remove('hidden'); // 显示历史区
+    document.getElementById('history-display').classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
-// 显示选择器并隐藏所有结果
 function showSelector() {
     stopReading(); 
     const results = document.querySelectorAll('.result-display');
@@ -97,24 +105,19 @@ function showSelector() {
 }
 
 
-// ------------------ 无障碍朗读功能（已优化移动端兼容性） ------------------
-
-// 全局变量用于保存 utterance 对象的引用，防止移动端浏览器将其作为垃圾回收
-window.currentUtterance = null;
+// ------------------ 无障碍朗读功能（已应用最高兼容性修复） ------------------
 
 /**
  * 朗读当前屏幕上的可见文本内容
  */
 function readPageContent() {
-    stopReading(); // 确保开始新的朗读前停止旧的
+    stopReading(); 
     
-    // 找到当前可见的展示区或历史区
     const currentDisplay = document.querySelector('.result-display:not(.hidden)');
-    
     let textToRead = '';
     
+    // ... (获取 textToRead 的逻辑不变) ...
     if (currentDisplay) {
-        // 如果在结果页或历史页，朗读标题和所有段落
         textToRead = currentDisplay.querySelector('h2')?.textContent || '';
         const paragraphs = currentDisplay.querySelectorAll('h3, p');
         paragraphs.forEach(p => {
@@ -123,7 +126,6 @@ function readPageContent() {
             }
         });
     } else {
-        // 如果在主选择页，朗读介绍和所有按钮名称
         textToRead += document.querySelector('#selection-header h1').textContent + '。';
         textToRead += document.querySelector('#selection-header p').textContent + '。';
         
@@ -138,18 +140,25 @@ function readPageContent() {
         });
     }
 
-    // 使用 SpeechSynthesis API 进行朗读
+
     if (textToRead && 'speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(textToRead);
-        utterance.lang = 'zh-CN'; // 确保使用中文发音
+        
+        // 🎯 优化点 1: 尝试使用预先找到的中文语音
+        if (window.zhVoice) {
+            utterance.voice = window.zhVoice;
+        } else {
+            // 如果没有找到特定的语音，至少设置语言为中文
+            utterance.lang = 'zh-CN'; 
+        }
 
-        // 🎯 优化点 1: 将对象存储在全局变量中，防止移动端垃圾回收
+        // 🎯 优化点 2: 将对象存储在全局变量中，防止移动端垃圾回收
         window.currentUtterance = utterance;
 
-        // 🎯 优化点 2: 使用 setTimeout 延迟启动，给移动端语音引擎初始化时间
+        // 🎯 优化点 3: 使用 setTimeout 延迟启动，确保在用户交互后稳定启动
         setTimeout(() => {
             window.speechSynthesis.speak(window.currentUtterance);
-        }, 100); // 延迟100毫秒
+        }, 100); 
         
     } else {
         console.warn('浏览器不支持文本转语音功能或无内容可读。');
@@ -162,7 +171,7 @@ function readPageContent() {
 function stopReading() {
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        // 🎯 优化点 3: 清理全局引用
+        // 清理全局引用
         window.currentUtterance = null;
     }
 }
