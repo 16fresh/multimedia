@@ -1,9 +1,8 @@
-// ------------------ 纹样数据配置 ------------------
+// ------------------ 纹样数据配置 (已添加新纹样) ------------------
 const MOTIFS_DATA = {
-    // Motif 1: 鹿纹（唯一一个纹样）
+    // Motif 1: 鹿纹 (已有的)
     '1': {
         description: '明代万历年间 - 哥釉青花松鹿纹瓶',
-        // 详细历史介绍，供“背景回望”和“朗读”功能使用
         history: '“哥釉青花”是其釉色与工艺风格的一种。所谓青花，即在瓷器胚胎上以钴料描绘图案，再施透明釉、入窑高温烧成，是中国传统“釉下彩”瓷器的重要流派。这件松鹿纹瓶以“鹿 + 松柏”为主要装饰——鹿取“禄”之谐音，象征“福禄”；松柏寓意长寿、常青，因此松鹿纹整体寓意为“福禄双全、长寿永年”。这种通过谐音与图像结合来表达吉祥寓意，是中国古代瓷器中常见的装饰寓意方式。瓶的造型为传统的“瓶／长颈瓶”样式（也有人称其为棒槌瓶、长颈圆腹瓶），线条流畅，造型稳重／端庄，结合纹饰与器型，使作品既具实用功能，又兼具观赏与象征价值。',
         images: {
             original: 'original_1.png',
@@ -12,8 +11,43 @@ const MOTIFS_DATA = {
             popart: 'popart_result_1.png',
             guochao: 'guochao_result_1.png'
         }
+    },
+    // Motif 2: 双狮鸳鸯纹镜 (新增)
+    '2': {
+        description: '唐代 - 双狮鸳鸯纹菱花铜镜',
+        history: '唐代铜镜制作达到巅峰，常以祥瑞动物为主题。此镜纹样中，两只雄狮相对嬉戏，象征威武和力量；鸳鸯双栖，寓意忠贞和爱情。整体圆形镜面与菱花边相结合，象征圆满和谐。铜镜在古代不仅是照容工具，更是寄托吉祥寓意的工艺品。',
+        images: {
+            original: 'original_2.png',
+            minimalist: 'Minimalist_result_2.png',
+            cyberpunk: 'Cyberpunk_result_2.png',
+            popart: 'popart_result_2.png',
+            guochao: 'guochao_result_2.png'
+        }
+    },
+    // Motif 3: 白玉夔龙佩 (新增)
+    '3': {
+        description: '清代 - 白玉夔龙纹佩',
+        history: '“夔龙”是中国古代神话中一种独脚的龙形瑞兽，常用于玉器、青铜器上，代表尊贵与权力。清代玉佩工艺精湛，此佩选用和田白玉雕刻，线条流畅，工艺精细。佩戴玉佩象征君子之德，玉质温润，寓意吉祥。',
+        images: {
+            original: 'original_3.png',
+            minimalist: 'Minimalist_result_3.png',
+            cyberpunk: 'Cyberpunk_result_3.png',
+            popart: 'popart_result_3.png',
+            guochao: 'guochao_result_3.png'
+        }
+    },
+    // Motif 4: 朱雀纹瓦当 (新增)
+    '4': {
+        description: '汉代 - 朱雀纹空心砖瓦当',
+        history: '朱雀是中国古代神话中的四象之一，代表南方和火，象征吉祥、长寿。瓦当是中国古代建筑中覆盖在屋檐前端的圆形或半圆形构件，常雕刻神兽纹样以避邪纳福。朱雀纹瓦当体现了汉代人对宇宙秩序的信仰和对吉祥安宁的追求。',
+        images: {
+            original: 'original_4.png',
+            minimalist: 'Minimalist_result_4.png',
+            cyberpunk: 'Cyberpunk_result_4.png',
+            popart: 'popart_result_4.png',
+            guochao: 'guochao_result_4.png'
+        }
     }
-    // 如果需要添加第二个纹样，请在此处添加 '2' 字段
 };
 
 
@@ -52,15 +86,15 @@ if ('speechSynthesis' in window) {
 }
 
 
-// ------------------ 页面初始化 ------------------
+// ------------------ 页面初始化 (已修改为动态加载) ------------------
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 读取 URL 参数
+    // 1. 读取 URL 参数 (这是多纹样展示的核心)
     const urlParams = new URLSearchParams(window.location.search);
-    const motifId = urlParams.get('motif') || '1'; // 默认加载 '1'
+    const motifId = urlParams.get('motif') || '1'; // 默认加载 '1' (鹿纹)
 
     // 2. 加载对应的纹样数据
-    const motifData = MOTIFS_DATA[motifId] || MOTIFS_DATA['1'];
+    const motifData = MOTIFS_DATA[motifId] || MOTIFS_DATA['1']; // 如果参数错误，依然回退到 '1'
     
     // 3. 应用纹样数据到 HTML 元素
     if (motifData) {
@@ -79,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             historyTextEl.textContent = motifData.history;
         }
 
-        // 更新四个结果展示页的图片
+        // 更新四个结果展示页的图片 (核心修改点：动态替换图片路径)
         document.querySelector('#minimalist img').src = `images/${motifData.images.minimalist}`;
         document.querySelector('#cyberpunk img').src = `images/${motifData.images.cyberpunk}`;
         document.querySelector('#popart img').src = `images/${motifData.images.popart}`;
@@ -96,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ------------------ 页面切换功能 ------------------
+// ------------------ 页面切换功能 (保持不变) ------------------
 
 // 显示特定结果并隐藏选择器
 function showResult(styleId) {
@@ -116,7 +150,7 @@ function showHistory() {
     document.querySelector('.style-selector').classList.add('hidden');
     const results = document.querySelectorAll('.result-display');
     results.forEach(el => el.classList.add('hidden'));
-    document.getElementById('history-display').classList.remove('hidden'); // 显示历史区
+    document.getElementById('history-display').classList.remove('hidden'); 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -132,7 +166,7 @@ function showSelector() {
 }
 
 
-// ------------------ 无障碍朗读功能（已应用最高兼容性修复） ------------------
+// ------------------ 无障碍朗读功能 (最高兼容性代码) ------------------
 
 /**
  * 朗读当前屏幕上的可见文本内容
@@ -140,13 +174,11 @@ function showSelector() {
 function readPageContent() {
     stopReading(); 
     
-    // 找到当前可见的展示区或历史区
     const currentDisplay = document.querySelector('.result-display:not(.hidden)');
-    
     let textToRead = '';
     
+    // ... (获取 textToRead 的逻辑不变) ...
     if (currentDisplay) {
-        // 如果在结果页或历史页，朗读标题和所有段落
         textToRead = currentDisplay.querySelector('h2')?.textContent || '';
         const paragraphs = currentDisplay.querySelectorAll('h3, p');
         paragraphs.forEach(p => {
@@ -206,7 +238,6 @@ function readPageContent() {
             window.speechSynthesis.speak(window.currentUtterance);
             
             // 🎯 终极保险：在某些移动端浏览器中，第一次 speak() 会失败，需要第二次
-            // 专门针对 Android/三星 TTS 引擎启动慢的问题
             setTimeout(() => {
                  // 检查是否在说话（如果不是，说明第一次失败了），然后强制重新启动
                  if (!window.speechSynthesis.speaking) {
