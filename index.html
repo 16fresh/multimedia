@@ -9,6 +9,10 @@
 </head>
 <body>
 
+    <div style="text-align: right; max-width: 640px; margin: 0 auto; padding: 0 20px;">
+        <button onclick="readPageContent()" title="朗读当前页面的内容">🔊 开始朗读</button>
+        <button onclick="stopReading()" title="停止朗读">🔇 停止朗读</button>
+    </div>
     <div class="container">
         <header id="selection-header">
             <h1>🎨 传统纹样的现代演化</h1>
@@ -22,19 +26,20 @@
                 <p><strong>明代万历年间 - 哥釉青花松鹿纹瓶</strong></p>
                 <p style="font-size: 0.95em; color: #666;">（鹿纹在明代寓意长寿吉祥。这段文字将作为您海报上动物纹样背景信息的延伸。）</p>
             </div>
-            </div> </header>
+            </header>
 
         <div class="style-selector">
             <button onclick="showResult('minimalist')">极简抽象风</button>
             <button onclick="showResult('cyberpunk')">赛博朋克风</button>
             <button onclick="showResult('popart')">波普艺术风</button>
             <button onclick="showResult('guochao')">新国潮风</button>
+            <button onclick="showHistory()" class="history-button">背景回望</button>
         </div>
-        
+
         <div id="minimalist" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>极简抽象风</h2>
-            <img src="images/Minimalist _result_1.png" alt="极简抽象风演化图" class="evolved-image"> 
+            <img src="images/Minimalist_result_1.png" alt="极简抽象风演化图" class="evolved-image"> 
             <div class="content-box">
                 <h3>设计解读</h3>
                 <p>我们将瑞兽纹样提炼至最基本的几何线条，去除了所有装饰性细节，强调其核心轮廓的视觉张力。这代表了当代设计对“形式服从功能”的追求，使得纹样具备了极强的现代识别性。</p>
@@ -79,9 +84,17 @@
             </div>
         </div>
 
-    </div>
+        <div id="history-display" class="result-display hidden">
+            <button class="back-button" onclick="showSelector()">← 返回选择</button>
+            <h2>📜 纹样历史回望</h2>
+            
+            <div class="content-box">
+                <h3>纹样溯源与背景</h3>
+                <p id="history-text">（此处的历史介绍内容将被脚本替换。）</p>
+                </div>
+        </div>
+        </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
