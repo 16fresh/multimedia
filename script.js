@@ -3,9 +3,8 @@ const MOTIFS_DATA = {
     // Motif 1: 鹿纹（唯一一个纹样）
     '1': {
         description: '明代万历年间 - 哥釉青花松鹿纹瓶',
-        history: '“哥釉青花”是其釉色与工艺风格的一种。所谓青花，即在瓷器胚胎上以钴料描绘图案，再施透明釉、入窑高温烧成，是中国传统“釉下彩”瓷器的重要流派。
-            这件松鹿纹瓶以“鹿 + 松柏”为主要装饰——鹿取“禄”之谐音，象征“福禄”；松柏寓意长寿、常青，因此松鹿纹整体寓意为“福禄双全、长寿永年”。这种通过谐音与图像结合来表达吉祥寓意，是中国古代瓷器中常见的装饰寓意方式。
-            瓶的造型为传统的“瓶／长颈瓶”样式（也有人称其为棒槌瓶、长颈圆腹瓶），线条流畅，造型稳重／端庄，结合纹饰与器型，使作品既具实用功能，又兼具观赏与象征价值。',
+        // 详细历史介绍，供“背景回望”和“朗读”功能使用
+        history: '“哥釉青花”是其釉色与工艺风格的一种。所谓青花，即在瓷器胚胎上以钴料描绘图案，再施透明釉、入窑高温烧成，是中国传统“釉下彩”瓷器的重要流派。这件松鹿纹瓶以“鹿 + 松柏”为主要装饰——鹿取“禄”之谐音，象征“福禄”；松柏寓意长寿、常青，因此松鹿纹整体寓意为“福禄双全、长寿永年”。这种通过谐音与图像结合来表达吉祥寓意，是中国古代瓷器中常见的装饰寓意方式。瓶的造型为传统的“瓶／长颈瓶”样式（也有人称其为棒槌瓶、长颈圆腹瓶），线条流畅，造型稳重／端庄，结合纹饰与器型，使作品既具实用功能，又兼具观赏与象征价值。',
         images: {
             original: 'original_1.png',
             minimalist: 'Minimalist_result_1.png',
@@ -14,6 +13,7 @@ const MOTIFS_DATA = {
             guochao: 'guochao_result_1.png'
         }
     }
+    // 如果需要添加第二个纹样，请在此处添加 '2' 字段
 };
 
 
@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 更新原始纹样图片
         document.querySelector('.original-motif img').src = `images/${motifData.images.original}`;
         
-        // 更新原始纹样介绍文本
+        // 更新原始纹样介绍文本 (strong标签内容)
         const descriptionElement = document.querySelector('.motif-description strong');
         if (descriptionElement) {
             descriptionElement.textContent = motifData.description;
         }
 
-        // 更新历史回望文本
+        // 更新历史回望文本 (history-text id内容)
         const historyTextEl = document.getElementById('history-text');
         if (historyTextEl) {
             historyTextEl.textContent = motifData.history;
@@ -74,7 +74,7 @@ function showResult(styleId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 显示历史介绍页面（新增）
+// 显示历史介绍页面
 function showHistory() {
     stopReading(); 
     document.getElementById('selection-header').classList.add('hidden');
@@ -97,7 +97,7 @@ function showSelector() {
 }
 
 
-// ------------------ 无障碍朗读功能（新增） ------------------
+// ------------------ 无障碍朗读功能 ------------------
 
 /**
  * 朗读当前屏幕上的可见文本内容
@@ -153,4 +153,3 @@ function stopReading() {
         window.speechSynthesis.cancel();
     }
 }
-
