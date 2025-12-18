@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <div style="text-align: right; max-width: 640px; margin: 0 auto; padding: 0 20px;">
-        <button onclick="readPageContent()" title="朗读当前页面的内容">🔊 开始朗读</button>
-        <button onclick="stopReading()" title="停止朗读">🔇 停止朗读</button>
+    <div style="text-align: right; max-width: 640px; margin: 0 auto; padding: 10px 20px;">
+        <button onclick="readPageContent()">🔊 开始朗读</button>
+        <button onclick="stopReading()">🔇 停止朗读</button>
     </div>
 
     <div class="container">
@@ -19,11 +19,11 @@
             <p>点击选择一种现代风格，查看古代瑞兽纹样在不同设计理念下的重生。</p>
             
             <div class="original-motif">
-                <img id="landing-img" src="" alt="纹样展示"> 
+                <img id="landing-img" src="" alt="纹样展示图"> 
                 
-                <div class="video-container">
+                <div class="video-container" style="margin-top: 15px; text-align: center;">
                     <button id="ai-video-btn" class="video-trigger-btn" onclick="playLandingVideo()">✨ 纹样AI动态化</button>
-                    <video id="landing-video" class="ai-video hidden" controls playsinline></video>
+                    <video id="landing-video" class="ai-video hidden" controls playsinline style="width:100%; border-radius:8px; margin-top:10px;"></video>
                 </div>
             </div>
             
@@ -45,40 +45,40 @@
         <div id="minimalist" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>极简抽象风</h2>
-            <img src="" alt="极简抽象风演化图" class="evolved-image"> 
+            <img src="" alt="极简抽象风" class="evolved-image"> 
             <div class="content-box">
                 <h3>设计解读</h3>
-                <p>我们将瑞兽纹样提炼至最基本的几何线条，强调其核心轮廓的视觉张力。</p>
+                <p>将纹样提炼至最基本的几何线条，强调视觉张力。</p>
             </div>
         </div>
 
         <div id="cyberpunk" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>赛博朋克风</h2>
-            <img src="" alt="赛博朋克风演化图" class="evolved-image">
+            <img src="" alt="赛博朋克风" class="evolved-image">
             <div class="content-box">
                 <h3>设计解读</h3>
-                <p>纹样被置于一个由霓虹和数据流构成的未来都市背景中。</p>
+                <p>纹样结合霓虹色彩与数据流，呈现未来都市美学。</p>
             </div>
         </div>
 
         <div id="popart" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>波普艺术风</h2>
-            <img src="" alt="波普艺术风演化图" class="evolved-image">
+            <img src="" alt="波普艺术风" class="evolved-image">
             <div class="content-box">
                 <h3>设计解读</h3>
-                <p>使用大胆的高饱和撞色，将历史悠久的纹样转化为流行图腾。</p>
+                <p>大胆的高饱和撞色，将传统纹样转化为流行符号。</p>
             </div>
         </div>
 
         <div id="guochao" class="result-display hidden">
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>新国潮风</h2>
-            <img src="" alt="新国潮风演化图" class="evolved-image">
+            <img src="" alt="新国潮风" class="evolved-image">
             <div class="content-box">
                 <h3>设计解读</h3>
-                <p>将瑞兽纹样与当代流行的漫画、插画风格相结合。</p>
+                <p>结合当代插画风格，强化中国红与金色的视觉冲击。</p>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
             <button class="back-button" onclick="showSelector()">← 返回选择</button>
             <h2>📜 纹样历史回望</h2>
             <div class="content-box">
-                <img id="history-img" src="" alt="原始纹样" class="evolved-image">
+                <img id="history-img" src="" alt="原始纹样图片" class="evolved-image">
                 <h3>纹样溯源与背景</h3>
                 <p id="history-text"></p>
             </div>
