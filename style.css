@@ -1,4 +1,4 @@
-/* 基础重置与字体 */
+/* 基础重置与容器 */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
@@ -8,7 +8,6 @@ body {
     line-height: 1.6;
 }
 
-/* 容器：限制宽度并居中，适应手机屏幕 */
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -18,12 +17,12 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* 头部和原始纹样 */
 #selection-header h1 {
-    color: #004d40; /* 深绿色，象征传统 */
+    color: #004d40;
     text-align: center;
     margin-bottom: 10px;
 }
+
 .original-motif img {
     width: 100%;
     max-width: 300px;
@@ -33,7 +32,7 @@ body {
     border-radius: 8px;
 }
 
-/* 风格选择按钮 */
+/* 按钮样式 */
 .style-selector {
     display: flex;
     flex-wrap: wrap;
@@ -41,8 +40,9 @@ body {
     justify-content: center;
     margin: 20px 0;
 }
+
 .style-selector button {
-    background-color: #00897b; /* 翠绿色 */
+    background-color: #00897b;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -51,43 +51,39 @@ body {
     border-radius: 25px;
     transition: background-color 0.3s;
 }
-.style-selector button:hover {
-    background-color: #00695c;
-}
 
-/* 结果展示区域 */
-.result-display {
-    padding-top: 20px;
-    border-top: 2px solid #eee;
-}
-.result-display h2 {
-    color: #e65100; /* 突出颜色，吸引目光 */
-    margin-top: 0;
+.style-selector button:hover { background-color: #00695c; }
+
+/* 视频组件样式 */
+.video-container {
+    margin-top: 20px;
     text-align: center;
 }
-.evolved-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.content-box h3 {
-    color: #555;
-    border-left: 4px solid #00897b;
-    padding-left: 10px;
-    margin-top: 25px;
-}
-.back-button {
-    background: none;
+
+.video-trigger-btn {
+    background: linear-gradient(135deg, #00897b, #004d40);
+    color: white;
     border: none;
-    color: #00897b;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
     cursor: pointer;
-    padding: 5px 0;
-    margin-bottom: 15px;
-    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
 }
 
-/* 隐藏类 */
-.hidden {
-    display: none;
+.video-trigger-btn:hover { transform: scale(1.05); }
+
+.ai-video {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #000;
 }
+
+/* 布局控制 */
+.result-display { padding-top: 20px; border-top: 2px solid #eee; }
+.evolved-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+.hidden { display: none !important; }
+.back-button { background: none; border: none; color: #00897b; cursor: pointer; margin-bottom: 15px; font-size: 16px; }
+.content-box h3 { border-left: 4px solid #00897b; padding-left: 10px; margin-top: 25px; }
