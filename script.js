@@ -5,7 +5,7 @@ const MOTIFS_DATA = {
         history: '“哥釉青花”是其釉色与工艺风格的一种。鹿取“禄”之谐音，象征“福禄”；松柏寓意长寿，寓意“福禄双全”。',
         video: 'video_1.mp4', 
         images: {
-            landing: 'landing_1.png',   
+            landing: 'landing_1.jpg',   
             original: 'original_1.png',  
             minimalist: 'Minimalist_result_1.png',
             cyberpunk: 'Cyberpunk_result_1.png',
@@ -18,7 +18,7 @@ const MOTIFS_DATA = {
         history: '唐代铜镜制作达到巅峰。双狮象征威武，鸳鸯寓意忠贞，整体象征圆满和谐。',
         video: 'video_2.mp4',
         images: {
-            landing: 'landing_2.png',
+            landing: 'landing_2.jpg',
             original: 'original_2.png',
             minimalist: 'Minimalist_result_2.png',
             cyberpunk: 'Cyberpunk_result_2.png',
@@ -31,7 +31,7 @@ const MOTIFS_DATA = {
         history: '质地细腻，夔龙纹呈S形构图，既具抽象装饰性，又体现神兽守护的象征意义。',
         video: 'video_3.mp4',
         images: {
-            landing: 'landing_3.png',
+            landing: 'landing_3.jpg',
             original: 'original_3.png',
             minimalist: 'Minimalist_result_3.png',
             cyberpunk: 'Cyberpunk_result_3.png',
@@ -44,7 +44,7 @@ const MOTIFS_DATA = {
         history: '朱雀代表南方和火，象征吉祥。瓦当是古代建筑构件，用于避邪纳福。',
         video: 'video_4.mp4',
         images: {
-            landing: 'landing_4.png',
+            landing: 'landing_4.jpg',
             original: 'original_4.png',
             minimalist: 'Minimalist_result_4.png',
             cyberpunk: 'Cyberpunk_result_4.png',
@@ -153,3 +153,4 @@ function readPageContent() {
     utterance.lang = 'zh-CN';
     window.speechSynthesis.speak(utterance);
 }
+
