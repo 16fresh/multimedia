@@ -1,11 +1,9 @@
-/* 基础重置与容器 */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
 }
 
 .container {
@@ -17,12 +15,6 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-#selection-header h1 {
-    color: #004d40;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 .original-motif img {
     width: 100%;
     max-width: 300px;
@@ -32,7 +24,29 @@ body {
     border-radius: 8px;
 }
 
-/* 按钮样式 */
+.video-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.video-trigger-btn {
+    background: linear-gradient(135deg, #00897b, #004d40);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.ai-video {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #000;
+}
+
 .style-selector {
     display: flex;
     flex-wrap: wrap;
@@ -45,45 +59,12 @@ body {
     background-color: #00897b;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 20px;
     cursor: pointer;
-    border-radius: 25px;
-    transition: background-color 0.3s;
 }
 
-.style-selector button:hover { background-color: #00695c; }
-
-/* 视频组件样式 */
-.video-container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.video-trigger-btn {
-    background: linear-gradient(135deg, #00897b, #004d40);
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
-}
-
-.video-trigger-btn:hover { transform: scale(1.05); }
-
-.ai-video {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 8px;
-    background-color: #000;
-}
-
-/* 布局控制 */
-.result-display { padding-top: 20px; border-top: 2px solid #eee; }
-.evolved-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
 .hidden { display: none !important; }
-.back-button { background: none; border: none; color: #00897b; cursor: pointer; margin-bottom: 15px; font-size: 16px; }
-.content-box h3 { border-left: 4px solid #00897b; padding-left: 10px; margin-top: 25px; }
+.result-display { border-top: 2px solid #eee; padding-top: 20px; }
+.evolved-image { width: 100%; border-radius: 8px; }
+.back-button { background: none; border: none; color: #00897b; cursor: pointer; }
